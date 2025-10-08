@@ -43,18 +43,18 @@ class Save_to_json_file(File_worker):
         pass
 
 
-if __name__ == "__main__":
-    hh = HH("dskfj")
-    response = hh.load_vacancies("менеджер")
-    # print(type(response))
-    # print(response[0])
-
-    # vacancy_list = Save_to_json_file(response)
-    # vacancy_list_with_attr = vacancy_list.vacancies_with_our_attributes()
-    # print(vacancy_list_with_attr)
-
-    response_json = Save_to_json_file(response)
-    response_json.save_vacancies_in_file("data/my_vacancies.json")
+# if __name__ == "__main__":
+#     hh = HH("dskfj")
+#     response = hh.load_vacancies("менеджер")
+#     # print(type(response))
+#     # print(response[0])
+#
+#     # vacancy_list = Save_to_json_file(response)
+#     # vacancy_list_with_attr = vacancy_list.vacancies_with_our_attributes()
+#     # print(vacancy_list_with_attr)
+#
+#     response_json = Save_to_json_file(response)
+#     response_json.save_vacancies_in_file("data/my_vacancies.json")
 
 
 

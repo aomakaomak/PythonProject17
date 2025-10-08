@@ -32,47 +32,47 @@ class Work_with_vacancies:
         return f"{self.name} ({self.salary} руб.)"
 
 
-if __name__ == "__main__":
-
-    hh2 = HH("ewjfi")
-    response = hh2.load_vacancies("менеджер")
-    vacancy2 = response[0]
-    print(vacancy2)
-    print(type(vacancy2))
-
-    name = vacancy2.get("name")
-    link = vacancy2.get("alternate_url")
-    salary = vacancy2["salary"]["from"]
-    requirement = vacancy2["snippet"]["requirement"]
-
-    print(name)
-    print(link)
-    print(salary)
-    print(requirement)
-
-    vacancy3 = response[1]
-    print(vacancy3["salary"]["from"])
-
-
-
-    name5 = vacancy3.get("name")
-    link5 = vacancy3.get("alternate_url")
-    salary5 = vacancy3["salary"]["from"]
-    requirement5 = vacancy3["snippet"]["requirement"]
-
-    vacancy4 = Work_with_vacancies(name, link, salary, requirement)
-    vacancy5 = Work_with_vacancies(name5, link5, salary5, requirement5)
-
-    print(vacancy4.salary)
-    print(vacancy5.salary)
-
-    if vacancy4 < vacancy5:
-        print("vacancy4 < vacancy5")
-    else:
-        print("vacancy4 > vacancy5")
-
-
+# if __name__ == "__main__":
 #
+#     hh2 = HH("ewjfi")
+#     response = hh2.load_vacancies("менеджер")
+#     vacancy2 = response[0]
+#     print(vacancy2)
+#     print(type(vacancy2))
+#
+#     name = vacancy2.get("name")
+#     link = vacancy2.get("alternate_url")
+#     salary = vacancy2["salary"]["from"]
+#     requirement = vacancy2["snippet"]["requirement"]
+#
+#     print(name)
+#     print(link)
+#     print(salary)
+#     print(requirement)
+#
+#     vacancy3 = response[1]
+#     print(vacancy3["salary"]["from"])
+#
+#
+#
+#     name5 = vacancy3.get("name")
+#     link5 = vacancy3.get("alternate_url")
+#     salary5 = vacancy3["salary"]["from"]
+#     requirement5 = vacancy3["snippet"]["requirement"]
+#
+#     vacancy4 = Work_with_vacancies(name, link, salary, requirement)
+#     vacancy5 = Work_with_vacancies(name5, link5, salary5, requirement5)
+#
+#     print(vacancy4.salary)
+#     print(vacancy5.salary)
+#
+#     if vacancy4 < vacancy5:
+#         print("vacancy4 < vacancy5")
+#     else:
+#         print("vacancy4 > vacancy5")
+#
+#
+# #
 #
 #
 
