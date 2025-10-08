@@ -1,5 +1,5 @@
 import requests
-
+from src.parser import Parser
 
 class HH(Parser):
     """
@@ -21,3 +21,23 @@ class HH(Parser):
             vacancies = response.json()['items']
             self.vacancies.extend(vacancies)
             self.params['page'] += 1
+        return self.vacancies
+
+if __name__ == "__main__":
+    file_worker = "dsf"
+    hh1 = HH(file_worker)
+    print(hh1)
+    print(type(hh1))
+
+    print(hh1.file_worker)
+    print(hh1.vacancies)
+
+    response = hh1.load_vacancies("менеджер")
+
+    print(type(response))
+    print(response[0])
+
+
+
+
+

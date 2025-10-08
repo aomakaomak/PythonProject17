@@ -1,0 +1,72 @@
+from src.hh import HH
+
+class Work_with_vacancies:
+    __slots__ = ("name", "link", "salary", "requirement")
+
+    def __init__(self, name, link, salary, requirement):
+        if not salary:
+            salary = 0
+
+        self.name = name
+        self.link = link
+        self.salary = salary
+        self.requirement = requirement
+
+
+    def __eq__(self, other):
+        return self.salary == other.salary
+
+    def __lt__(self, other):
+        return self.salary < other.salary
+
+    def __gt__(self, other):
+        return self.salary > other.salary
+
+    def __repr__(self):
+        return f"{self.name} ({self.salary} руб.)"
+
+
+if __name__ == "__main__":
+
+    hh2 = HH("ewjfi")
+    response = hh2.load_vacancies("менеджер")
+    vacancy2 = response[0]
+    print(vacancy2)
+    print(type(vacancy2))
+
+    name = vacancy2.get("name")
+    link = vacancy2.get("alternate_url")
+    salary = vacancy2["salary"]["from"]
+    requirement = vacancy2["snippet"]["requirement"]
+
+    print(name)
+    print(link)
+    print(salary)
+    print(requirement)
+
+    vacancy3 = response[1]
+    print(vacancy3["salary"]["from"])
+
+
+
+    name5 = vacancy3.get("name")
+    link5 = vacancy3.get("alternate_url")
+    salary5 = vacancy3["salary"]["from"]
+    requirement5 = vacancy3["snippet"]["requirement"]
+
+    vacancy4 = Work_with_vacancies(name, link, salary, requirement)
+    vacancy5 = Work_with_vacancies(name5, link5, salary5, requirement5)
+
+    print(vacancy4.salary)
+    print(vacancy5.salary)
+
+    if vacancy4 < vacancy5:
+        print("vacancy4 < vacancy5")
+    else:
+        print("vacancy4 > vacancy5")
+
+
+
+
+
+
