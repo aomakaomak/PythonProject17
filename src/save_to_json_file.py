@@ -1,4 +1,4 @@
-from file_worker import File_worker
+from src.file_worker import File_worker
 from typing import List
 import json
 from src.hh import HH
@@ -30,7 +30,7 @@ class Save_to_json_file(File_worker):
 
     def save_vacancies_in_file(self, file_path):
         data_with_attr = self.vacancies_with_our_attributes()
-        with open(file_path, 'w', encoding="UTF-8") as f:
+        with open(file_path, 'a', encoding="UTF-8") as f:
             json.dump(data_with_attr, f, indent=4, ensure_ascii=False)
 
 
