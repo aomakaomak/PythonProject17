@@ -1,33 +1,52 @@
 from src.hh import HH
-from src.work_with_vacancies import Work_with_vacancies
 from src.save_to_json_file import Save_to_json_file
+from src.utils import get_top_n_for_keyword
+from src.work_with_vacancies import Work_with_vacancies
 
-import heapq
 
 def main_function():
+    """Главная функция взаимодействия с пользователем."""
+    kw = input("Введите ключевое слово для поиска на hh.ru: ").strip()
+    if not kw:
+        print("Пустой запрос.")
+        return
 
-    keyword = input("Введите ключевое слово: ")
-    quantity = int(input("Введите количество вакансий с максимальной зп: "))
+    try:
+        n = int(
+            input(
+                "Введите количество вакансий для вывода (топ N по зарплате): "
+            ).strip()
+        )
+    except ValueError:
+        print("Нужно ввести число.")
+        return
 
-    file_worker = "any"
-    hh = HH(file_worker)
-    response = hh.load_vacancies(keyword)
+    top_vacancies = get_top_n_for_keyword(kw, n)
+    if not top_vacancies:
+        print("Ничего не найдено.")
+        return
 
-    # vacancy_list = []
-    # for vacancy in response:
-    #     if vacancy > min(vacancy_list):
-    #         vacancy_list.append(vacancy)
+    # выводим вакансии на экран
+    print(f"\n— Топ-{n} по зарплате для «{kw}» —")
+    for i, v in enumerate(top_vacancies, 1):
+        print(f"{i}. {v['name']} — {v['salary']} ₽ | {v['link']}")
 
-    response_for_compare = Work_with_vacancies(response)
+        # -------- Сохраняем через Save_to_json_file --------
+    # 1) Получаем сырые данные с hh (те же по ключевому слову)
+    hh = HH(file_worker=None)
+    raw_all = hh.load_vacancies(kw)  # список «сырых» вакансий от API
 
-    top5 = heapq.nlargest(quantity, response_for_compare)
-    return top5
+    # 2) Оставляем только те, что попали в топ (по ссылкам)
+    top_links = {v["link"] for v in top_vacancies}
+    raw_selected = [v for v in raw_all if v.get("alternate_url") in top_links]
 
+    # 3) Отдаём сырые вакансии в Save_to_json_file -> внутри они нормализуются и сохраняются
+    file_path = f"data/top_{n}_{kw}.json"
+    saver = Save_to_json_file(raw_selected)
+    saver.save_vacancies_in_file(file_path)
 
-
+    print(f"\n✅ Топ-{n} вакансий сохранён в файл: {file_path}")
 
 
 if __name__ == "__main__":
-    print(main_function())
-
-
+    main_function()

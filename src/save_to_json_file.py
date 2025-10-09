@@ -1,15 +1,18 @@
-from src.file_worker import File_worker
-from typing import List
 import json
+from typing import List
+
+from src.file_worker import File_worker
 from src.hh import HH
 
 
 class Save_to_json_file(File_worker):
+    """Класс для работы со спарсенными данными"""
 
     def __init__(self, data: List):
         self.data = data
 
     def vacancies_with_our_attributes(self):
+        """Формируем список словарей на основе определенных нами атрибутов"""
         vacancy_list = []
         for vacancy in self.data:
             if vacancy.get("salary"):
@@ -20,24 +23,20 @@ class Save_to_json_file(File_worker):
                 "name": vacancy.get("name"),
                 "link": vacancy.get("alternate_url"),
                 "salary": salary,
-                "requirement": vacancy.get("snippet").get("requirement")
+                "requirement": vacancy.get("snippet").get("requirement"),
             }
             vacancy_list.append(vacancy_dict)
 
         return vacancy_list
 
-
-
     def save_vacancies_in_file(self, file_path):
+        """Сохраняем в json файл"""
         data_with_attr = self.vacancies_with_our_attributes()
-        with open(file_path, 'a', encoding="UTF-8") as f:
+        with open(file_path, "a", encoding="UTF-8") as f:
             json.dump(data_with_attr, f, indent=4, ensure_ascii=False)
-
-
 
     def filter_from_file(self, *args, **kwargs):
         pass
-
 
     def del_vacancy(self, *args, **kwargs):
         pass
@@ -55,6 +54,3 @@ class Save_to_json_file(File_worker):
 #
 #     response_json = Save_to_json_file(response)
 #     response_json.save_vacancies_in_file("data/my_vacancies.json")
-
-
-

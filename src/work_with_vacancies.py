@@ -1,6 +1,9 @@
 from src.hh import HH
 
+
 class Work_with_vacancies:
+    """Класс для валидации и сравнения вакансий по з/п"""
+
     __slots__ = ("name", "link", "salary", "requirement")
 
     def __init__(self, name, link, salary, requirement):
@@ -16,8 +19,6 @@ class Work_with_vacancies:
             return 0
         else:
             return salary
-
-
 
     def __eq__(self, other):
         return self.salary == other.salary
@@ -75,4 +76,3 @@ class Work_with_vacancies:
 # #
 #
 #
-

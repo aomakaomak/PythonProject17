@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
 
 
-
 class File_worker(ABC):
 
     @abstractmethod
