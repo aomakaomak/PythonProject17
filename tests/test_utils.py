@@ -1,12 +1,11 @@
 import unittest
 from unittest.mock import MagicMock, patch
 
-from src.utils import \
-    get_top_n_for_keyword  # допустим, функция в файле top_n.py
+from src.utils import get_top_n_for_keyword  # допустим, функция в файле top_n.py
 
 
 class TestGetTopNForKeyword(unittest.TestCase):
-    @patch("src.utils.Save_to_json_file")
+    @patch("src.utils.SaveToJsonFile")
     @patch("src.utils.HH")
     def test_get_top_n_for_keyword(self, mock_hh_class, mock_save_class):
         # --- 1. Настраиваем мок HH ---

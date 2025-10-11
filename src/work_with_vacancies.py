@@ -1,7 +1,7 @@
 from src.hh import HH
 
 
-class Work_with_vacancies:
+class WorkWithVacancies:
     """Класс для валидации и сравнения вакансий по з/п"""
 
     __slots__ = ("name", "link", "salary", "requirement")
@@ -14,7 +14,7 @@ class Work_with_vacancies:
         self.requirement = requirement
 
     @staticmethod
-    def validate(salary):
+    def validate(salary: int):
         """Проверяем, что указана зп"""
         if not salary:
             return 0

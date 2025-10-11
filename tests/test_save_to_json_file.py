@@ -1,4 +1,4 @@
-from src.save_to_json_file import Save_to_json_file
+from src.save_to_json_file import SaveToJsonFile
 
 
 def test_save_to_json_file_init(data_list):
@@ -7,7 +7,7 @@ def test_save_to_json_file_init(data_list):
 
 def test_vacancies_with_our_attributes(sample_vacancies):
 
-    saver = Save_to_json_file(sample_vacancies)
+    saver = SaveToJsonFile(sample_vacancies)
     result = saver.vacancies_with_our_attributes()
 
     assert isinstance(result, list)

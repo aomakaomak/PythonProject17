@@ -5,7 +5,7 @@ from src.file_worker import FileWorker
 from src.hh import HH
 
 
-class Save_to_json_file(FileWorker):
+class SaveToJsonFile(FileWorker):
     """Класс для работы со спарсенными данными"""
 
     def __init__(self, data: List):
@@ -29,7 +29,7 @@ class Save_to_json_file(FileWorker):
 
         return vacancy_list
 
-    def save_vacancies_in_file(self, file_path):
+    def save_vacancies_in_file(self, file_path: str):
         """Сохраняем в json файл"""
         data_with_attr = self.vacancies_with_our_attributes()
         with open(file_path, "a", encoding="UTF-8") as f:

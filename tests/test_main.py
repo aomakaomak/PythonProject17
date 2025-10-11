@@ -83,7 +83,7 @@ def test_main_function_happy_path(monkeypatch, capsys, sample_vacancies):
         def save_vacancies_in_file(self, path):
             saved_payload["path"] = path
 
-    monkeypatch.setattr(main_mod, "Save_to_json_file", SaveSpy)
+    monkeypatch.setattr(main_mod, "SaveToJsonFile", SaveSpy)
 
     # 5) Запускаем функцию
     main_mod.main_function()

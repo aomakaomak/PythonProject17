@@ -32,17 +32,15 @@ class HH(Parser):
             try:
                 response.raise_for_status()
             except requests.HTTPError:
-                print(f"Ошибка при запросе: {getattr(response, 'status_code', 'unknown')}")
+                print(
+                    f"Ошибка при запросе: {getattr(response, 'status_code', 'unknown')}"
+                )
                 break
 
             vacancies = response.json()["items"]
             self.vacancies.extend(vacancies)
             self.__params["page"] += 1
         return self.vacancies
-
-
-
-
 
 
 # if __name__ == "__main__":

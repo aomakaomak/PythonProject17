@@ -1,7 +1,7 @@
 from src.hh import HH
-from src.save_to_json_file import Save_to_json_file
+from src.save_to_json_file import SaveToJsonFile
 from src.utils import get_top_n_for_keyword
-from src.work_with_vacancies import Work_with_vacancies
+from src.work_with_vacancies import WorkWithVacancies
 
 
 def main_function():
@@ -42,7 +42,7 @@ def main_function():
 
     # 3) Отдаём сырые вакансии в Save_to_json_file -> внутри они нормализуются и сохраняются
     file_path = f"data/top_{n}_{kw}.json"
-    saver = Save_to_json_file(raw_selected)
+    saver = SaveToJsonFile(raw_selected)
     saver.save_vacancies_in_file(file_path)
 
     print(f"\n✅ Топ-{n} вакансий сохранён в файл: {file_path}")

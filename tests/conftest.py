@@ -1,12 +1,12 @@
 import pytest
 
-from src.save_to_json_file import Save_to_json_file
-from src.work_with_vacancies import Work_with_vacancies
+from src.save_to_json_file import SaveToJsonFile
+from src.work_with_vacancies import WorkWithVacancies
 
 
 @pytest.fixture
 def first_vacancy():
-    return Work_with_vacancies(
+    return WorkWithVacancies(
         name="Manager",
         link="some link 1",
         salary=200000,
@@ -16,7 +16,7 @@ def first_vacancy():
 
 @pytest.fixture
 def second_vacancy():
-    return Work_with_vacancies(
+    return WorkWithVacancies(
         name="Supervisor",
         link="some link 2",
         salary=300000,
@@ -26,7 +26,7 @@ def second_vacancy():
 
 @pytest.fixture
 def vacancy_without_salary():
-    return Work_with_vacancies(
+    return WorkWithVacancies(
         name="Without salary",
         link="some link 3",
         salary="",
@@ -36,7 +36,7 @@ def vacancy_without_salary():
 
 @pytest.fixture
 def data_list():
-    return Save_to_json_file([1, 2, 3])
+    return SaveToJsonFile([1, 2, 3])
 
 
 @pytest.fixture
