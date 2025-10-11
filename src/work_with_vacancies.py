@@ -15,21 +15,26 @@ class Work_with_vacancies:
 
     @staticmethod
     def validate(salary):
+        """Проверяем, что указана зп"""
         if not salary:
             return 0
         else:
             return salary
 
     def __eq__(self, other):
+        """Реализуем методы сравнения"""
         return self.salary == other.salary
 
     def __lt__(self, other):
+        """Реализуем методы сравнения"""
         return self.salary < other.salary
 
     def __gt__(self, other):
+        """Реализуем методы сравнения"""
         return self.salary > other.salary
 
     def __repr__(self):
+        """Формируем представление"""
         return f"{self.name} ({self.salary} руб.)"
 
 

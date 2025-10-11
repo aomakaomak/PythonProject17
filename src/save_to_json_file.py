@@ -1,11 +1,11 @@
 import json
 from typing import List
 
-from src.file_worker import File_worker
+from src.file_worker import FileWorker
 from src.hh import HH
 
 
-class Save_to_json_file(File_worker):
+class Save_to_json_file(FileWorker):
     """Класс для работы со спарсенными данными"""
 
     def __init__(self, data: List):
@@ -36,9 +36,11 @@ class Save_to_json_file(File_worker):
             json.dump(data_with_attr, f, indent=4, ensure_ascii=False)
 
     def filter_from_file(self, *args, **kwargs):
+        """Метод для фильтрации вакансий"""
         pass
 
     def del_vacancy(self, *args, **kwargs):
+        """Метод для удаления вакансий"""
         pass
 
 
